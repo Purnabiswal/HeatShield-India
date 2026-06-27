@@ -1,73 +1,49 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import Sun from "../models_3d/Sun";
+
+import BaseModel from "./BaseModel";
+import HouseModel from "./HouseModel";
 import SolarModel from "../models_3d/SolarModel";
 
-function House({ solar, coolRoof, trees }) {
+function Scene({ houseArea, scene }) {
   return (
     <>
-      {/* House Body */}
-      <mesh position={[0, 0.5, 0]}>
-        <boxGeometry args={[2, 1, 2]} />
-        <meshStandardMaterial color="#f5deb3" />
-      </mesh>
+      {/* Fixed Ground */}
 
-      {/* Roof */}
-      <mesh position={[0, 1.3, 0]}>
-        <boxGeometry args={[2.2, 0.3, 2.2]} />
-        <meshStandardMaterial color={coolRoof ? "white" : "brown"} />
-      </mesh>
+      {/* <BaseModel /> */}
 
-      {/* Solar Panel */}
-      {/* {solar && (
-        <mesh position={[0, 1.5, 0]}>
-          <boxGeometry args={[1.5, 0.05, 1]} />
-          <meshStandardMaterial color="blue" />
-        </mesh>
-      )} */}
+      {/* Scalable House */}
 
-      {solar && <SolarModel />}
+      {/* <HouseModel houseArea={houseArea} /> */}
 
-      {/* Trees */}
-      {trees && (
-        <>
-          <mesh position={[-3, 1, 0]}>
-            <cylinderGeometry args={[0.1, 0.1, 1]} />
-            <meshStandardMaterial color="brown" />
-          </mesh>
+      {/* Solar */}
 
-          <mesh position={[-3, 2, 0]}>
-            <sphereGeometry args={[0.5]} />
-            <meshStandardMaterial color="green" />
-          </mesh>
+      {/* {solar && <SolarModel houseArea={houseArea} />} */}
 
-          <mesh position={[3, 1, 0]}>
-            <cylinderGeometry args={[0.1, 0.1, 1]} />
-            <meshStandardMaterial color="brown" />
-          </mesh>
+      <BaseModel scene={scene} />
 
-          <mesh position={[3, 2, 0]}>
-            <sphereGeometry args={[0.5]} />
-            <meshStandardMaterial color="green" />
-          </mesh>
-        </>
-      )}
+      <HouseModel houseArea={houseArea} scene={scene} />
+
+      {scene.solar && <SolarModel houseArea={houseArea} />}
     </>
   );
 }
 
-function House3D(props) {
+export default function House3D(props) {
   return (
-    <Canvas camera={{ position: [5, 5, 5] }}>
+    <Canvas
+      camera={{
+        position: [6, 5, 7],
+        fov: 45,
+      }}
+    >
       <ambientLight intensity={2} />
-      <directionalLight position={[10, 10, 5]} />
 
-      {/* <Sun /> */}
-      <House {...props} />
+      <directionalLight intensity={2} position={[6, 8, 5]} />
 
-      <OrbitControls />
+      <Scene {...props} />
+
+      <OrbitControls enablePan enableZoom minDistance={4} maxDistance={10} />
     </Canvas>
   );
 }
-
-export default House3D;

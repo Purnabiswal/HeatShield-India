@@ -1,10 +1,14 @@
-import React from "react";
 import { useGLTF } from "@react-three/drei";
+import { useMemo } from "react";
 
-const SolarModel = () => {
+export default function SolarModel({ houseArea }) {
   const { scene } = useGLTF("/models/solar.glb");
 
-  return <primitive object={scene} position={[0, 2, 0]} scale={0.5} />;
-};
+  const scale = useMemo(() => {
+    return 0.8 + ((houseArea - 50) / 200) * 0.65;
+  }, [houseArea]);
 
-export default SolarModel;
+  return (
+    <primitive object={scene.clone()} scale={scale} position={[0, 0, 0]} />
+  );
+}
