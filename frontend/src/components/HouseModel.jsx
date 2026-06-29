@@ -5,6 +5,8 @@ import * as THREE from "three";
 export default function HouseModel({ houseArea, sceneState }) {
   const { scene } = useGLTF("/models/house.glb");
 
+  
+
   const scale = useMemo(() => {
     return 0.8 + ((houseArea - 50) / 200) * 0.65;
   }, [houseArea]);
@@ -13,8 +15,14 @@ export default function HouseModel({ houseArea, sceneState }) {
 
   const baseYOffset = useMemo(() => {
     const box = new THREE.Box3().setFromObject(clonedScene);
+
+
+    
     return -box.min.y;
   }, [clonedScene]);
+
+
+
 
   return (
     <primitive
