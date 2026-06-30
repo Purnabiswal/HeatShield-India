@@ -9,6 +9,6 @@ export default function SolarModel({ houseArea }) {
   }, [houseArea]);
 
   return (
-    <primitive object={scene.clone()} scale={scale} position={[0, 0, 0]} />
+    <primitive object={scene.clone()} scale={scale} position={[-0.55, 0.35, 0]} />
   );
 }
