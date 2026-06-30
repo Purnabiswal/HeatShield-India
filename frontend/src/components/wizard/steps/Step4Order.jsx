@@ -148,7 +148,7 @@ export default function Step4Order() {
         </div>
       )}
 
-      <div className="flex gap-4">
+      {/* <div className="flex gap-4">
         <button
           onClick={() => setStep(3)}
           className="flex-1 rounded-xl border py-3 font-semibold"
@@ -166,7 +166,7 @@ export default function Step4Order() {
         >
           {loading ? "Generating..." : "Generate Proposal"}
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }

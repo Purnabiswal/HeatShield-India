@@ -4,6 +4,7 @@ const WizardContext = createContext();
 
 export function WizardProvider({ children, initialData }) {
   const [step, setStep] = useState(1);
+  
 
   const [wizardData, setWizardData] = useState({
     location: {
