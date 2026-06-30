@@ -24,7 +24,9 @@ function Scene({ houseArea, scene }) {
 
       <HouseModel houseArea={houseArea} scene={scene} />
 
-      {scene.solar && <SolarModel houseArea={houseArea} />}
+      {scene.solar && (
+        <SolarModel houseArea={houseArea} selectedKW={scene.selectedKW} />
+      )}
     </>
   );
 }

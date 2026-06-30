@@ -23,6 +23,8 @@ export function SceneProvider({ children }) {
     heatReduction: 0,
 
     indoorTemp: 35,
+    // solar: true,
+    selectedKW: 0,
   });
 
   return (
