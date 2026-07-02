@@ -1,12 +1,27 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import { calculateSolar } from "../services/api";
 
 export default function Home() {
   const navigate = useNavigate();
 
   const [address, setAddress] = useState("");
   const [bill, setBill] = useState("");
+
+  async function testBackend() {
+    try {
+      const res = await calculateSolar({
+        address: "Bhubaneswar",
+        monthlyBill: 2500,
+        houseArea: 120,
+      });
+
+      console.log(res);
+    } catch (e) {
+      console.error(e);
+    }
+  }
 
   function startPlanning() {
     navigate("/builder", {
@@ -69,6 +84,8 @@ export default function Home() {
             >
               Start
             </button>
+
+            <button onClick={testBackend}>Test Backend</button>
           </div>
         </div>
       </div>

@@ -1,7 +1,17 @@
-import axios from "axios";
+const BASE_URL = "http://localhost:5000/api";
 
-const api = axios.create({
-  baseURL: "http://localhost:5000/api",
-});
+export async function calculateSolar(data) {
+  const response = await fetch(`${BASE_URL}/planner/calculate`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
 
-export default api;
+  if (!response.ok) {
+    throw new Error("Failed to calculate.");
+  }
+
+  return response.json();
+}

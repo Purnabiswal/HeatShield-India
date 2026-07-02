@@ -1,7 +1,9 @@
 import { useWizard } from "./WizardContext";
+import { useNavigate } from "react-router-dom";
 
 export default function WizardFooter() {
   const { step, setStep } = useWizard();
+  const navigate = useNavigate();
 
   return (
     <div className="flex gap-3 mt-6">
@@ -26,7 +28,8 @@ export default function WizardFooter() {
       {step === 4 && (
         <button
           className="flex-1 bg-green-600 text-white rounded-lg py-3"
-          onClick={() => setStep(5)}
+          // onClick={() => setStep(5)}
+          onClick={() => navigate("/processing")}
         >
           Purchase
         </button>

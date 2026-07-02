@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Builder from "./pages/Builder";
 import SavedHouses from "./pages/SavedHouses";
+import Processing from "./pages/Processing";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/builder" element={<Builder />} />
       <Route path="/saved" element={<SavedHouses />} />
+      <Route path="/processing" element={<Processing />} />
     </Routes>
   );
 }
