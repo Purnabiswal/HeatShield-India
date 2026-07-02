@@ -1,4 +1,5 @@
-const BASE_URL = "http://localhost:5000/api";
+// const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = "https://heatshield-india.onrender.com";
 
 export async function calculateSolar(data) {
   const response = await fetch(`${BASE_URL}/planner/calculate`, {
